@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 const addMultiplePosts = () => {
-    const [posts, setPosts] = useState([{ title: '', author: '', content: '' }]);
+    const [posts, setPosts] = useState([{ title: '', slug: '', author: '', content: '' }]);
     const handleChange = (index, event) => {
         const newPosts = posts.slice();
         newPosts[index][event.target.name] = event.target.value;
         setPosts(newPosts);
     };
     const addMultiPostBox = () => {
-        setPosts([...posts, { title: '', author: '', content: '' }]);
+        setPosts([...posts, { title: '', slug: '', author: '', content: '' }]);
     };
     const handleSubmitForm = async (e) => {
         e.preventDefault();
@@ -18,8 +18,9 @@ const addMultiplePosts = () => {
             body: JSON.stringify(posts)
         });
         if (res.ok) {
-            console.log("Done: post added");
-            setPosts([{ title: '',author:'', content: '' }]);
+            // console.log("Done: post added");
+            alert('Post added');
+            setPosts([{ title: '', slug: '', author: '', content: '' }]);
         } else {
             console.error("failed to create posts");
         }
@@ -44,7 +45,12 @@ const addMultiplePosts = () => {
                                             </div>
                                         </div>
                                         <div className="relative z-0 w-full mb-5 group">
-                                            <textarea value={post.content} onChange={(e) => handleChange(index, e)} type="email" name="content" id={`contentArea${index}`} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " rows={5} required />
+                                            <textarea value={post.slug} onChange={(e) => handleChange(index, e)} type="text" name="slug" id={`slug${index}`} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " rows={1} required />
+                                            <label htmlFor={`slug${index}`} className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Slug</label>
+                                        </div>
+
+                                        <div className="relative z-0 w-full mb-5 group">
+                                            <textarea value={post.content} onChange={(e) => handleChange(index, e)} type="text" name="content" id={`contentArea${index}`} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " rows={5} required />
                                             <label htmlFor={`contentArea${index}`} className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Content</label>
                                         </div>
                                     </div>

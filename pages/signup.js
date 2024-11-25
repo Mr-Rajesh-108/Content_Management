@@ -4,11 +4,11 @@ import { useState } from 'react';
 
 
 const signup = () => {
-    const [fastName, setFastName] = useState('');
+    const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [cityDist, setCityDist] = useState('')
+    const [cityDist, setCityDist] = useState('');
     const [state, setState] = useState('');
     const [pinCode, setPinCode] = useState('');
     const router = useRouter();
@@ -21,14 +21,14 @@ const signup = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ fastName, lastName, email, password, cityDist, state, pinCode }),
+            body: JSON.stringify({ firstName, lastName, email, password, cityDist, state, pinCode }),
         });
 
         const data = await res.json();
 
         if (res.ok) {
             alert('User added successfully');
-            setFastName('');
+            setFirstName('');
             setLastName('');
             setEmail('');
             setPassword('');
@@ -65,7 +65,7 @@ const signup = () => {
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
                                         First Name
                                     </label>
-                                    <input value={fastName} onChange={(e) => setFastName(e.target.value)} className="appearance-none block w-full bg-gray-200 text-gray-700  border focus:border-pink-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="first-name" type="text" placeholder="Rajesh" />
+                                    <input value={firstName} onChange={(e) => setFirstName(e.target.value)} className="appearance-none block w-full bg-gray-200 text-gray-700  border focus:border-pink-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="first-name" type="text" placeholder="Rajesh" />
                                 </div>
                                 <div className="w-full md:w-1/2 px-3">
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="last-name">
@@ -79,7 +79,7 @@ const signup = () => {
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="email">
                                         email id
                                     </label>
-                                    <input value={email} onChange={(e) => setEmail(e.target.value)} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-pink-400" id="email" type="email" placeholder="user123@gmail.com" />
+                                    <input value={email} onChange={(e) => setEmail(e.target.value.toLowerCase())} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-pink-400" id="email" type="email" placeholder="user123@gmail.com" />
                                 </div>
                             </div>
                             <div className="flex flex-wrap -mx-3 mb-6">

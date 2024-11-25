@@ -1,13 +1,12 @@
 // pages/api/login.js
-import connectToDatabase from '@/lib/mongoose';
+import dbConnect from '@/lib/mongoose';
 import User from '../../models/User';
-import { decryptPassword } from '@/lib/cryptp';
-
+import { decryptPassword } from '@/lib/crypto';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      await connectToDatabase();
+      await dbConnect();
       const { email, password } = req.body;
       // console.log(email,password)
       // Input validation

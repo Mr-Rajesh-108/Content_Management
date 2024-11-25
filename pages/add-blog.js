@@ -17,6 +17,7 @@ const AddBlog = () => {
       if (response.ok) {
         const newBlog = await response.json();
         setBlogs([...blogs, ...newBlog.data]);
+        alert('Post added...')
       } else {
         console.error('Failed to add blog post');
       }
@@ -28,22 +29,12 @@ const AddBlog = () => {
   return (
     <>
      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded shadow-lg">
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-lg">
         <h2 className="text-2xl font-bold text-center">Add a New Blog Post</h2>
     <BlogForm onSubmit={addBlogPost} />
        
       </div>
     </div>
-      {/* <h2>Existing Blog Posts</h2>
-      <ul>
-        {blogs.map((blog) => (
-          <li key={blog._id}>
-            <h3>{blog.title}</h3>
-            <p>{blog.content}</p>
-            <p>By: {blog.author}</p>
-          </li>
-        ))}
-      </ul> */}
     </>
   );
 };

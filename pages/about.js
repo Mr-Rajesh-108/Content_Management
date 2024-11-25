@@ -11,7 +11,7 @@ const about = () => {
       <div>
         <h1>Welcome to Stock Market Learning & Blogging</h1>
         <p>Your go-to platform for learning about the stock market and sharing insights.</p>
-        <Link href="/blogs"><p>Read Our Blog</p></Link>
+        <Link href="/blog"><p>Read Our Blog</p></Link>
         <Link href="/learn"><p>Start Learning</p></Link>
       </div>
     </>

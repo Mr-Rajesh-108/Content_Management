@@ -36,7 +36,7 @@ const login = () => {
         <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-500 shadow drop-shadow-md shadow-pink-400 rounded p-8 mb-4">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2 dark:text-white" htmlFor="username">Email id</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} className="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 focus:outline-none leading-tight border-2 focus:border-pink-400" id="username" type="email" placeholder="Email or Username" />
+            <input value={email} onChange={(e) => setEmail(e.target.value.toLowerCase())} className="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 focus:outline-none leading-tight border-2 focus:border-pink-400" id="username" type="email" placeholder="Email or Username" />
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2" htmlFor="password">
