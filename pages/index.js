@@ -84,6 +84,8 @@ function Home() {
                 <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.</p>
               </div>
             </div> 
+          </div>
+          <div className='text-center my-3'>
             <button className="bn5 hover:before:opacity-100 dark:after:bg-white after:bg-slate-300 font-semibold text-lg text-pink-400  border-pink-400 border-2 rounded-lg z-0 relative cursor-pointer outline-none tracking-wider py-2 px-3">Hover</button>
           </div>
         </div>

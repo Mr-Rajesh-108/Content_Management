@@ -28,9 +28,8 @@ export default function ResetPassword() {
                 body: JSON.stringify({ token, email, password }),
             });
 
-            // const data = 
-            // await response.json();
-            // console.log(data);
+            const data =  await response.json();
+            console.log(data);
             
             if (response.ok) {
                 setMessage("Password reset successfully!");

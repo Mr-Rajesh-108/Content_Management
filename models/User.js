@@ -33,6 +33,8 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
 });
 const User = mongoose.models.User || mongoose.model('User', UserSchema);
 export default User;

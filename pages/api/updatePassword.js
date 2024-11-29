@@ -1,17 +1,14 @@
 import dbConnect from "@/lib/mongoose";
 import User from "@/models/User";
-// import bcrypt from 'bcrypt';
-import { encryptPassword } from "@/lib/crypto";
-
+import { encryptPassword, hashToken } from "../../lib/crypto";
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { token, email, password } = req.body;
-
+        const hashed = hashToken(token);
         try {
             await dbConnect();
-            const user = await User.findOne({ email });
-            console.log(user,token)
+            const user = await User.findOne({ resetPasswordToken: hashed });
             if (!user) {
                 return res.status(400).json({ message: 'Invalid or expired token' });
             }
