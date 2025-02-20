@@ -24,7 +24,7 @@ export default async function handler(req, res) {
             }
             const resetToken=generateToken();
             user.resetPasswordToken = hashToken(resetToken);
-            user.resetPasswordExpires = Date.now() + 3600000; // Token expires in 1 hour
+            user.resetPasswordExpires = Date.now() + 3600000; // Token expires in 1h
             await user.save();
 
             const resetLink = `${process.env.BASE_URL}/reset-password?token=${encodeURIComponent(resetToken)}`;

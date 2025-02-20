@@ -1,18 +1,17 @@
-import Link from 'next/link';
-import React, { useState } from 'react';
+import Link from "next/link";
+import React, { useState } from "react";
 
 const Forget = () => {
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // alert('hello');
-    const res = await fetch('api/reset-password', {
-      method: 'POST',
+    const res = await fetch("api/reset-password", {
+      method: "POST",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
       body: JSON.stringify({ email, lastName, firstName }),
     });
@@ -22,11 +21,12 @@ const Forget = () => {
     console.log(data);
 
     if (res.ok) {
-      alert('Reset Mail Send Successful');
-
-      // router.push('/');
+      alert("Reset Mail Send Successful");
+      setEmail("");
+      setFirstName("");
+      setLastName("");
     } else {
-      alert(data.message || 'Invalid credentials ');
+      alert(data.message || "Invalid credentials ");
     }
   };
 
@@ -36,7 +36,9 @@ const Forget = () => {
         <div
           className="flex bg-white absolute rounded-lg shadow-lg overflow-hidden w-[80%] md:w-[61%] sm:w-[61%] lg:w-[61%] xl:w-[61%] 2xl:w-[61%] dark:bg-slate-800"
           style={{
-            top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         >
           <div
@@ -114,11 +116,8 @@ const Forget = () => {
                 </div>
               </div>
               <div className="text-center">
-                <button
-                  type="submit"
-                  className="text-center border bg-pink-400 rounded-md border-cyan-500 p-3 mt-4"
-                >
-                  submit
+                <button class="bg-gray-300 hover:bg-pink-400 font-bold py-2 px-4 border-2 border-pink-700 hover:border-black rounded dark:hover:border-white dark:bg-gray-300 dark:text-pink-600">
+                  Find Account
                 </button>
               </div>
             </form>

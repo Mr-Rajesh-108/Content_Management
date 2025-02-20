@@ -1,6 +1,3 @@
-// const { default: connectToDatabase } = require("@/lib/mongoose");
-// const { default: User } = require("@/models/User");
-
 import connectToDatabase from "@/lib/mongoose";
 import User from "@/models/User";
 
@@ -15,7 +12,7 @@ const users = async (req, res) => {
         }
     } else {
         res.setHeader('Allow', ['POST']);
-        res.status(405).end(`method $(req.method) not Allowed`);
+        res.status(405).end(`method ${req.method} not Allowed`);
 
     }
 

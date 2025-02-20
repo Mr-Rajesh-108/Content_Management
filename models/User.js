@@ -1,40 +1,46 @@
-import mongoose from 'mongoose';
-const UserSchema = new mongoose.Schema({
+import mongoose from "mongoose";
+
+const UserSchema = new mongoose.Schema(
+  {
     firstName: {
-        type: String,
-        require: true,
+      type: String,
+      required: true,
     },
     lastName: {
-        type: String,
-        require: true,
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        require: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
     password: {
-        type: String,
-        require: true,
+      type: String,
+      required: true,
     },
     cityDist: {
-        type: String,
-        require: true,
+      type: String,
+      required: true,
     },
     state: {
-        type: String,
-        require: true,
+      type: String,
+      required: true,
     },
     pinCode: {
-        type: Number,
-        require: true,
+      type: Number,
+      required: true,
     },
-    createAt: {
-        type: Date,
-        default: Date.now
-    },
-    resetPasswordToken: String,
-    resetPasswordExpires: Date,
-});
-const User = mongoose.models.User || mongoose.model('User', UserSchema);
+    resetPasswordToken: String,  // Token for password reset
+    resetPasswordExpires: { type: Date },  // Expiration time for the password reset token
+    
+  },
+  {
+    timestamps: true, // Automatically adds createdAt and updatedAt fields
+  }
+);
+
+// Check if the model already exists to avoid overwriting
+const User = mongoose.models.User || mongoose.model("User", UserSchema);
+
 export default User;

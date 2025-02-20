@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
-import Image from 'next/image';
-import Link from 'next/link';
-import connectToDatabase from '@/lib/mongoose';
-import Blogs from '@/models/Blogs';
-import formatedDate from '@/lib/formatedDate';
+import { useRouter } from "next/router";
+import Image from "next/image";
+import Link from "next/link";
+import connectToDatabase from "@/lib/mongoose";
+import Blogs from "@/models/Blogs";
+import formatedDate from "@/lib/formatedDate";
 
 export default function BlogReadingPage({ post }) {
   const router = useRouter();
@@ -16,9 +16,11 @@ export default function BlogReadingPage({ post }) {
     <div className="container mx-auto px-4 lg:px-8 py-8">
       {/* Hero Section */}
       <div className="bg-gray-100 p-8 rounded-lg mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 text-center mb-4">{post.title}</h1>
+        <h1 className="text-4xl font-bold text-gray-900 text-center mb-4">
+          {post.title}
+        </h1>
         <p className="text-center text-gray-600">
-          By {post.author || 'Anonymous'} • {post.createdAt}
+          By {post.author || "Anonymous"} • {`${post.createdAt.formattedDate}`} • {`${post.createdAt.time}`}
         </p>
         {/* Optionally add a background image */}
         {post.image && (
@@ -73,14 +75,9 @@ export async function getServerSideProps({ params }) {
 
   const post = await Blogs.findOne({ slug: params.slug }).lean();
 
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
-
   post._id = post._id.toString();
   post.createdAt = formatedDate(post.createdAt);
+  post.updatedAt = formatedDate(post.updatedAt);
   return {
     props: {
       post,

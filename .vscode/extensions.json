@@ -1,5 +1,13 @@
 {
     "recommendations": [
-        "pawelborkar.jellyfish"
+        "pawelborkar.jellyfish",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "christian-kohler.npm-intellisense",
+        "wix.vscode-import-cost",
+        "formulahendry.auto-rename-tag",
+        "rodrigovallades.es7-react-js-snippets",
+        "rangav.vscode-thunder-client",
+        "mongodb.mongodb-vscode"
     ]
 }
